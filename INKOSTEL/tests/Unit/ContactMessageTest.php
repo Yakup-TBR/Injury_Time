@@ -8,9 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ContactMessageTest extends TestCase
 {
-    use RefreshDatabase;
-
-    public function test_can_create_contact_message()
+    public function test_create_contact_message()
     {
         $data = [
             'name' => 'Yakup',
