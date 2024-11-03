@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Illuminate\Http\Request;
 
 
-class TesDeleteKos extends TestCase 
+class DeleteKosTest extends TestCase 
 {
 
     public function testItCanDeleteASavedKos()
