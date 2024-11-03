@@ -77,21 +77,16 @@
                             Rp <span id="harga-pertahun">
                                 <?php
                                 $harga_pertahun = $carikos->harga_kos_pertahun;
-
-                                // Membersihkan string dari tanda titik ribuan dan mengubahnya ke float
                                 $harga_pertahun_float = floatval(str_replace(",", "", str_replace(".", "", $harga_pertahun)));
-
-                                // Menggunakan number_format untuk format angka
                                 echo number_format($harga_pertahun_float, 2, ',', '.');
                                 ?>
                             </span>
                         </h5>
-                        </h5>
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="dropdown" id="luar">
                                     <button class="btn btn-outline-secondary dropdown-toggle" style="width: 10rem; color: #6DD6BF; border-color: #6DD6BF;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="text-color"> Harga</span>
+                                        <span class="text-color">Harga</span>
                                     </button>
                                     <ul class="dropdown-menu" id="dalam">
                                         <li><a class="dropdown-item" id="drop_pertahun" href="#" onclick="ubahHarga('pertahun')">Pertahun</a></li>
@@ -102,47 +97,61 @@
                             <div class="col-md-6">
                                 <div class="dropdown">
                                     <button class="btn btn-outline-secondary dropdown-toggle" style="width: 10rem; border-color: #6DD6BF;" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="text-color"> Jarak</span>
+                                        <span class="text-color">Mata Uang</span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="#"> {{number_format($carikos->jarak_kos / 1000, 2) }} km</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="ubahCurrency('IDR')">Rupiah</a></li>
+                                        <li><a class="dropdown-item" href="#" onclick="ubahCurrency('USD')">Dolar</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <a href="https://wa.me/{{ $carikos->ContactPerson }}" target="_blank" class="btn btn-outline-success d-block mx-auto bi bi-whatsapp">WhatsApp</a>
-                        <!-- Menggunakan "d-block mx-auto" untuk mengatur tombol di tengah -->
                     </div>
                 </div>
+                <h6>jarak : {{number_format($carikos->jarak_kos / 1000, 2) }} km</h6>
                 <h6>Alamat : {{ $carikos->alamat }}</h6>
             </div>
 
-
             <script>
-                function formatRupiah(angka) {
-                    var formatter = new Intl.NumberFormat('id-ID', {
-                        style: 'currency',
-                        currency: 'IDR'
-                    });
+                var currentCurrency = 'IDR';
+                var exchangeRate = 15000; // Nilai tukar contoh dari IDR ke USD
 
-                    return formatter.format(angka);
+                function formatCurrency(angka, currency) {
+                    if (currency === 'IDR') {
+                        return new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR'
+                        }).format(angka);
+                    } else if (currency === 'USD') {
+                        return new Intl.NumberFormat('en-US', {
+                            style: 'currency',
+                            currency: 'USD'
+                        }).format(angka / exchangeRate);
+                    }
                 }
 
                 function ubahHarga(jenisHarga) {
                     var HargaElement = document.getElementById('harga-tahun');
-                    var HargaPerbulan = parseFloat("{{$carikos->harga_kos_perbulan}}".replace(",", ""))
-                    var HargaPertahun = parseFloat("{{$carikos->harga_kos_pertahun}}".replace(",", ""))
+                    var HargaPerbulan = parseFloat("{{$carikos->harga_kos_perbulan}}".replace(",", ""));
+                    var HargaPertahun = parseFloat("{{$carikos->harga_kos_pertahun}}".replace(",", ""));
 
                     if (jenisHarga === 'pertahun') {
-                        HargaElement.innerText = formatRupiah(HargaPertahun)
+                        HargaElement.innerText = formatCurrency(HargaPertahun, currentCurrency);
                     } else if (jenisHarga === 'perbulan') {
-                        HargaElement.innerText = formatRupiah(HargaPerbulan)
+                        HargaElement.innerText = formatCurrency(HargaPerbulan, currentCurrency);
                     }
+                }
 
-
+                function ubahCurrency(currency) {
+                    currentCurrency = currency;
+                    var HargaElement = document.getElementById('harga-tahun');
+                    var hargaSekarang = HargaElement.innerText.includes('Pertahun') ? "pertahun" : "pertahun";
+                    ubahHarga(hargaSekarang);
                 }
             </script>
+
         </div>
     </div>
 
