@@ -19,6 +19,18 @@
     @extends('partial.navbar')
 
     @section('isi')
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <!-- Tombol Filter Pencarian -->
     <div class="filter-button">
         <button type="button" class="btn" data-filter="semua">Semua</button>
@@ -51,8 +63,9 @@
                         <form action="{{ route('hapus.simpan', ['id' => $kos->id]) }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="bookmark-btn" onclick="deletekos(this)">
-                                <i class=" bi bi-bookmark-fill"></i>
+                            <input type="hidden" name="confirm_delete" value="yes">
+                            <button type="submit" class="bookmark-btn" onclick="return confirm('Apakah Anda yakin ingin menghapus kos ini?')">
+                                <i class="bi bi-bookmark-fill"></i> 
                             </button>
                         </form>
                     </div>

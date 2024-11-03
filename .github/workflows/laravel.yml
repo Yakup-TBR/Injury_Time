@@ -5,10 +5,11 @@ on:
     branches:
       - main
       - contact_us
+      - Validasi_Hapus_Kos
   pull_request:
     branches:
       - main
-      - contact_us
+      - Validasi_Hapus_Kos
 
 jobs:
   test:
