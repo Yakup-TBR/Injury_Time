@@ -11,6 +11,7 @@ use App\Http\Controllers\JualController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CariKosController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ValidationController;
 
 
@@ -81,3 +82,10 @@ Route::get('/updateData/{id_kos}', [ValidationController::class, 'acceptkos'])->
 // Acc
 Route::get('/terima/{id_kos}', [ValidationController::class, 'terima'])->name('terima')->middleware('admin');
 Route::get('/tolak/{id_kos}', [ValidationController::class, 'tolak'])->name('tolak')->middleware('admin');
+
+// ContactUs
+Route::get('/contactUs', function () {
+    return view('contactUs');
+})->name('contactUs');
+
+Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
