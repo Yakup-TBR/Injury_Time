@@ -27,7 +27,7 @@ class ContactMessageTest extends TestCase
         $this->expectException(\Illuminate\Database\QueryException::class);
 
         ContactMessage::create([
-            'email' => 'yakup@gmail.com', // Missing required fields like 'name', 'subject', 'message'
+            'email' => 'yakup@gmail.com', // required 'name', 'subject', 'message'
         ]);
     }
 }
