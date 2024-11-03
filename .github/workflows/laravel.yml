@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - contact_us
   pull_request:
     branches:
       - main
+      - contact_us
 
 jobs:
   test:
