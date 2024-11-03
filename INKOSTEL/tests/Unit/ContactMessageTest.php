@@ -21,4 +21,13 @@ class ContactMessageTest extends TestCase
 
         $this->assertDatabaseHas('contact_messages', $data);
     }
+
+    public function test_contact_message_requires_all_fields()
+    {
+        $this->expectException(\Illuminate\Database\QueryException::class);
+
+        ContactMessage::create([
+            'email' => 'yakup@gmail.com', // Missing required fields like 'name', 'subject', 'message'
+        ]);
+    }
 }
