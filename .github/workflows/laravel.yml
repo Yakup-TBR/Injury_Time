@@ -6,11 +6,13 @@ on:
       - main
       - contact_us
       - Validasi_Hapus_Kos
+      - detailkos
   pull_request:
     branches:
       - main
       - contact_us
       - Validasi_Hapus_Kos
+      - detailkos
 
 jobs:
   test:
