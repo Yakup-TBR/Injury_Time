@@ -7,7 +7,7 @@ use Tests\TestCase;
 use Illuminate\Http\Request;
 
 
-class TesDeleteKos extends TestCase // Ubah nama kelas di sini
+class TesDeleteKos extends TestCase 
 {
 
     public function testItCanDeleteASavedKos()
