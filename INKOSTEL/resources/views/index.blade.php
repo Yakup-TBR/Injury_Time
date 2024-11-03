@@ -275,7 +275,7 @@
                     <br> <br> <br>
                     <h5>Support</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#">FAQs</a></li>
+                        <li class="mb-2"><a href="{{ url('/faq') }}">FAQs</a></li>
                         <li class="mb-2"><a href="#">Support Center</a></li>
                         <li class="mb-2"><a href="#">Contact Us</a></li>
                     </ul>
