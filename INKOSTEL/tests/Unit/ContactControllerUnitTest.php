@@ -11,7 +11,7 @@ class ContactControllerUnitTest extends TestCase
 {
     public function test_store_method_validates_request_data()
     {
-        $this->expectException(ValidationException::class);
+        $this->expectException(exception: ValidationException::class);
 
         $controller = new ContactController();
         $request = Request::create('/contact-us', 'POST', [
