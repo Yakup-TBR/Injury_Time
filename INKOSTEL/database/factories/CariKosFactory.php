@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\CariKos;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CariKosFactory extends Factory
@@ -12,6 +13,7 @@ class CariKosFactory extends Factory
     public function definition()
     {
         return [
+            'user_id' => User::factory(),
             'id_kos' => $this->faker->unique()->numberBetween(1, 100),
             'nama_kos' => $this->faker->word,
             'harga_kos_pertahun' => $this->faker->numberBetween(1000000, 5000000),
