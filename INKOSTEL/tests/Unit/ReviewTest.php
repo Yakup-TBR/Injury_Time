@@ -1,15 +1,12 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use App\Models\Review;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReviewTest extends TestCase
 {
-    use RefreshDatabase; // Menggunakan RefreshDatabase untuk membersihkan database setelah setiap pengujian
-
     /** @test */
     public function it_can_add_a_review()
     {
