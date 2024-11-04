@@ -7,12 +7,14 @@ on:
       - contact_us
       - Validasi_Hapus_Kos
       - detailkos
+      - review_rizki
   pull_request:
     branches:
       - main
       - contact_us
       - Validasi_Hapus_Kos
       - detailkos
+      - review_rizki
 
 jobs:
   test:
