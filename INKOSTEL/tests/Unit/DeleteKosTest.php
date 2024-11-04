@@ -2,22 +2,21 @@
 
 namespace Tests\Unit;
 
-use App\Models\Simpan;
 use Tests\TestCase;
-use Illuminate\Http\Request;
+use App\Models\Simpan; 
 
-
-class DeleteKosTest extends TestCase 
+class DeleteKosTest extends TestCase
 {
+    
 
     public function testItCanDeleteASavedKos()
     {
         $simpan = Simpan::create([
-            'user_id' => 1,
-            'id_kos' => 1,
+            'user_id' => 14,
+            'id_kos' => 16,
             'nama_kos' => 'Kos Test',
-            'harga_kos_pertahun' => 1000000,
-            'jarak_kos' => 500,
+            'harga_kos_pertahun' => 8000000,
+            'jarak_kos' => 700,
             'gambar_kos1' => 'path/to/image.jpg'
         ]);
 
@@ -26,6 +25,7 @@ class DeleteKosTest extends TestCase
             'nama_kos' => 'Kos Test',
         ]);
 
+        // Simulasi penghapusan dengan konfirmasi
         $simpan->delete();
 
         $this->assertDatabaseMissing('bookmark_kos', [
@@ -36,16 +36,21 @@ class DeleteKosTest extends TestCase
     public function testItFailsToDeleteKosWithoutConfirmation()
     {
         $simpan = Simpan::create([
-            'user_id' => 1,
-            'id_kos' => 1,
+            'user_id' => 14,
+            'id_kos' => 16,
             'nama_kos' => 'Kos Test',
-            'harga_kos_pertahun' => 1000000,
-            'jarak_kos' => 500,
+            'harga_kos_pertahun' => 8000000,
+            'jarak_kos' => 700,
             'gambar_kos1' => 'path/to/image.jpg'
         ]);
 
         $this->assertDatabaseHas('bookmark_kos', [
             'id' => $simpan->id,
+        ]);
+
+
+        $this->assertDatabaseHas('bookmark_kos', [
+            'id' => $simpan->id, 
         ]);
     }
 
@@ -55,5 +60,4 @@ class DeleteKosTest extends TestCase
     
         $this->assertNull($simpan, 'Data tidak seharusnya ditemukan di database');
     }
-    
 }
