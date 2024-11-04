@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Models\Simpan; 
 use App\Models\User;
-use App\Models\Carikos;
+use App\Models\CariKos;
 
 class DeleteKosTest extends TestCase
 {

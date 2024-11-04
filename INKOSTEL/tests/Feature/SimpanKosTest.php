@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use App\Models\Simpan;
 use App\Models\User; 
-use App\Models\Carikos; // Pastikan untuk menggunakan model Carikos
+use App\Models\CariKos; // Pastikan untuk menggunakan model Carikos
 
 class SimpanKosTest extends TestCase
 {
