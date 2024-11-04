@@ -61,7 +61,6 @@ class SimpanController extends Controller
 
     public function hapusSimpan(Request $request, $id)
     {
-        // Cek konfirmasi dari input pengguna
         if ($request->input('confirm_delete') !== 'yes') {
             return redirect()->back()->with('error', 'Konfirmasi penghapusan diperlukan.');
         }
