@@ -69,7 +69,7 @@
 
             </div>
             <hr>
-            <p>Lokasi: <a id="lokasi" >Mencari lokasi....</a></p>
+            <!-- <p>Lokasi: <a id="lokasi" >Mencari lokasi....</a></p> -->
             <p>Copyright @ 2023 Kelompok 5 - Web Programming, InKosTel</p>
             <!-- secara diam diam, masukan data ini ke form         'id_user' => 'required',
             'latitude' => 'required',
