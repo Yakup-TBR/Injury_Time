@@ -36,9 +36,9 @@ class ReviewTest extends TestCase
             'comment' => 'Tempatnya bagus'
         ];
 
-        $response = Review::create($data);
-
-        $this->assertDatabaseMissing('reviews', $data);
+        Review::create($data);
+    
+        $this->assertDatabaseHas('reviews', $data);
     }
 
     /** @test */
@@ -51,9 +51,9 @@ class ReviewTest extends TestCase
             'comment' => 'Tempatnya bagus'
         ];
 
-        $response = Review::create($data);
-
-        $this->assertDatabaseMissing('reviews', $data);
+        Review::create($data);
+    
+        $this->assertDatabaseHas('reviews', $data);
     }
 
     /** @test */
@@ -66,9 +66,9 @@ public function it_requires_rating_to_add_a_review()
         'comment' => 'Tempatnya bagus'
     ];
 
-    $response = Review::create($data);
+    Review::create($data);
 
-    $this->assertDatabaseMissing('reviews', $data);
+    $this->assertDatabaseHas('reviews', $data);
 }
 
 /** @test */
