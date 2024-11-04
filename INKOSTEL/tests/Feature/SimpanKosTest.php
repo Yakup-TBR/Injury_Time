@@ -4,29 +4,32 @@ namespace Tests\Unit;
 
 use Tests\TestCase;
 use App\Models\Simpan;
-
+use App\Models\User; 
 
 class SimpanKosTest extends TestCase
 {
-
     public function testItCanSaveKos()
-    {
-        $data = [
-            'user_id' => 1,
-            'id_kos' => 6,
-            'nama_kos' => 'Kos Test',
-            'harga_kos_pertahun' => '800000',
-            'jarak_kos' => '1200',
-            'gambar_kos1' => 'path/to/image.jpg'
-        ];
+{
+    // Membuat pengguna baru menggunakan factory
+    $user = User::factory()->create();
 
-        
-        $simpan = Simpan::create($data);
+    $data = [
+        'user_id' => $user->id, 
+        'id_kos' => 7,
+        'nama_kos' => 'Kos Test',
+        'harga_kos_pertahun' => '800000',
+        'jarak_kos' => '1200',
+        'gambar_kos1' => 'path/to/image.jpg'
+    ];
 
-      
-        $this->assertDatabaseHas('bookmark_kos', [
-            'id' => $simpan->id,
-            'nama_kos' => 'Kos Test',
-        ]);
-    }
+    // Simpan data kos
+    $simpan = Simpan::create($data);
+
+    // Memastikan data disimpan di database
+    $this->assertDatabaseHas('bookmark_kos', [
+        'id' => $simpan->id,
+        'nama_kos' => 'Kos Test',
+    ]);
+}
+
 }
