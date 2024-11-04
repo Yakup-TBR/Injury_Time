@@ -44,7 +44,7 @@
                         <div class="card shadow-sm">
                             <div class="card-header text-center" id="card-head">
                                 <h2>Contact Us</h2>
-                                <p class="mb-0">Beri tahu kami bagaimana kami dapat meng-upgrade Inkostel!</p>
+                                <p class="mb-0">Hubungi kami atau Beritahu bagaimana kami dapat meng-upgrade Inkostel!</p>
                             </div>
 
                             <div class="card-body">
