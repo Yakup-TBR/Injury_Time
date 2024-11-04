@@ -13,6 +13,7 @@ use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CariKosController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ValidationController;
+use App\Http\Controllers\SaranController;
 
 
 //use App\Http\Controllers\RegisterController;
@@ -89,3 +90,6 @@ Route::get('/contactUs', function () {
 })->name('contactUs');
 
 Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('/saran', [SaranController::class, 'index'])->name('saran.index');
+Route::post('/saran', [SaranController::class, 'store'])->name('saran.store');
