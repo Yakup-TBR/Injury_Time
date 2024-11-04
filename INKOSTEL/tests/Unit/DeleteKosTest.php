@@ -12,8 +12,8 @@ class DeleteKosTest extends TestCase
     public function testItCanDeleteASavedKos()
     {
         $simpan = Simpan::create([
-            'user_id' => 14,
-            'id_kos' => 16,
+            'user_id' => 1,
+            'id_kos' => 6,
             'nama_kos' => 'Kos Test',
             'harga_kos_pertahun' => 8000000,
             'jarak_kos' => 700,
@@ -36,8 +36,8 @@ class DeleteKosTest extends TestCase
     public function testItFailsToDeleteKosWithoutConfirmation()
     {
         $simpan = Simpan::create([
-            'user_id' => 14,
-            'id_kos' => 16,
+            'user_id' => 1,
+            'id_kos' => 6,
             'nama_kos' => 'Kos Test',
             'harga_kos_pertahun' => 8000000,
             'jarak_kos' => 700,
