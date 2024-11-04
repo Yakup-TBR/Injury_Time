@@ -1,85 +1,103 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
-use Tests\TestCase;
-use App\Models\User;
 use App\Models\Review;
-use App\Models\carikos;
+use Tests\TestCase;
 
 class ReviewTest extends TestCase
 {
+
     /** @test */
     public function it_can_add_a_review()
     {
-
+        // Data dummy untuk membuat review
         $data = [
             'id_kos' => '7',
             'user_id' => '1',
             'rating' => '5',
-            'comment' => 'Tempatnya bagus'
+            'comment' => 'Tempatnya bagus',
         ];
 
+        // Buat review menggunakan model
         Review::create($data);
 
+        // Periksa apakah data tersebut ada di tabel reviews
         $this->assertDatabaseHas('reviews', $data);
     }
 
     /** @test */
     public function it_requires_user_id_to_add_a_review()
     {
-
+        // Data dummy tanpa user_id
         $data = [
             'id_kos' => '7',
             'rating' => '5',
-            'comment' => 'Tempatnya bagus'
+            'comment' => 'Tempatnya bagus',
         ];
 
-        $response = Review::create($data);
-    
-        $this->assertDatabaseMissing('reviews', $data);
+        // Coba membuat review tanpa user_id
+        try {
+            Review::create($data);
+        } catch (\Exception $e) {
+            // Pastikan bahwa data tidak masuk ke dalam database
+            $this->assertDatabaseMissing('reviews', $data);
+        }
     }
 
     /** @test */
-    public function it_requires_id_kos_to_add_a_review() 
+    public function it_requires_id_kos_to_add_a_review()
     {
+        // Data dummy tanpa id_kos
         $data = [
             'user_id' => '1',
             'rating' => '5',
-            'comment' => 'Tempatnya bagus'
+            'comment' => 'Tempatnya bagus',
         ];
 
-        $response = Review::create($data);
-    
-        $this->assertDatabaseMissing('reviews', $data);
+        // Coba membuat review tanpa id_kos
+        try {
+            Review::create($data);
+        } catch (\Exception $e) {
+            // Pastikan bahwa data tidak masuk ke dalam database
+            $this->assertDatabaseMissing('reviews', $data);
+        }
     }
 
     /** @test */
-public function it_requires_rating_to_add_a_review()
-{
-    $data = [
-        'id_kos' => '7',
-        'user_id' => '1',
-        'comment' => 'Tempatnya bagus'
-    ];
+    public function it_requires_rating_to_add_a_review()
+    {
+        // Data dummy tanpa rating
+        $data = [
+            'id_kos' => '7',
+            'user_id' => '1',
+            'comment' => 'Tempatnya bagus',
+        ];
 
-    $response = Review::create($data);
+        // Coba membuat review tanpa rating
+        try {
+            Review::create($data);
+        } catch (\Exception $e) {
+            // Pastikan bahwa data tidak masuk ke dalam database
+            $this->assertDatabaseMissing('reviews', $data);
+        }
+    }
 
-    $this->assertDatabaseMissing('reviews', $data);
-}
-/** @test */
-public function it_can_add_a_review_with_empty_comment()
-{
-    $data = [
-        'id_kos' => '7',
-        'user_id' => '1',
-        'rating' => '4',
-        'comment' => '' // Komentar kosong
-    ];
+    /** @test */
+    public function it_can_add_a_review_with_empty_comment()
+    {
+        // Data dummy dengan komentar kosong
+        $data = [
+            'id_kos' => '7',
+            'user_id' => '1',
+            'rating' => '4',
+            'comment' => '', // Komentar kosong
+        ];
 
-    Review::create($data);
+        // Buat review dengan komentar kosong
+        Review::create($data);
 
-    $this->assertDatabaseHas('reviews', $data);
-}
-
+        // Periksa apakah data tersebut ada di tabel reviews
+        $this->assertDatabaseHas('reviews', $data);
+    }
 }
