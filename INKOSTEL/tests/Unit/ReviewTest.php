@@ -31,20 +31,21 @@ class ReviewTest extends TestCase
 
         $data = [
             'id_kos' => '7',
+            'user_id' => '14', //Fix
             'rating' => '5',
             'comment' => 'Tempatnya bagus'
         ];
 
         $response = Review::create($data);
 
-        // Pastikan bahwa data tidak masuk ke dalam database
         $this->assertDatabaseMissing('reviews', $data);
     }
 
     /** @test */
-    public function it_requires_id_kos_to_add_a_review()
+    public function it_requires_id_kos_to_add_a_review() 
     {
         $data = [
+            'id_kos' => '7', //Fix
             'user_id' => '14',
             'rating' => '5',
             'comment' => 'Tempatnya bagus'
@@ -52,7 +53,6 @@ class ReviewTest extends TestCase
 
         $response = Review::create($data);
 
-        // Pastikan bahwa data tidak masuk ke dalam database
         $this->assertDatabaseMissing('reviews', $data);
     }
 
@@ -62,12 +62,12 @@ public function it_requires_rating_to_add_a_review()
     $data = [
         'id_kos' => '7',
         'user_id' => '14',
+        'rating' => '5', //Fix
         'comment' => 'Tempatnya bagus'
     ];
 
     $response = Review::create($data);
 
-    // Pastikan bahwa data tidak masuk ke dalam database
     $this->assertDatabaseMissing('reviews', $data);
 }
 
@@ -83,7 +83,6 @@ public function it_can_add_a_review_with_empty_comment()
 
     Review::create($data);
 
-    // Pastikan bahwa data masuk ke dalam database
     $this->assertDatabaseHas('reviews', $data);
 }
 
