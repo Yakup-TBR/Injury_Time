@@ -53,6 +53,8 @@
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="#">FAQs</a></li>
                         <li class="mb-2"><a href="#">Support Center</a></li>
+                        <li class="mb-2"><a href="./saran">Suggession</a></li>
+
                         <li class="mb-2"><a href="contactUs">Contact Us</a></li>
                     </ul>
                 </div>
@@ -69,12 +71,23 @@
 
             </div>
             <hr>
+            <!-- <p>Lokasi: <a id="lokasi" >Mencari lokasi....</a></p> -->
             <p>Copyright @ 2023 Kelompok 5 - Web Programming, InKosTel</p>
+            <!-- secara diam diam, masukan data ini ke form         'id_user' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'tanggal' => 'required',
+            'waktu' => 'required', -->
+          
+
+             
+
         </div>
     </footer>
     <!--Akhir Footer-->
 
     <!-- script js -->
+    <script src="{{ asset('js/lokasi.js') }}"></script>
 
     <script src="{{ asset('js/layout.js') }}"></script>
 </body>
