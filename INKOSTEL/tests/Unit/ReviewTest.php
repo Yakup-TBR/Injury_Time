@@ -32,11 +32,9 @@ class ReviewTest extends TestCase
             'comment' => 'Tempatnya bagus'
         ];
 
-        // Validate the data
         $this->validateReviewData($data);
 
-        // Normally create the review in the database if validation passes
-        $this->assertTrue(true); // Bypass actual database insertion in test
+        $this->assertTrue(true); 
     }
 
     /** @test */
@@ -46,12 +44,10 @@ class ReviewTest extends TestCase
 
         $data = [
             'id_kos' => '7',
-            // 'user_id' is missing here
             'rating' => '5',
             'comment' => 'Tempatnya bagus'
         ];
 
-        // Validate the data to check for missing user_id
         $this->validateReviewData($data);
     }
 
@@ -61,13 +57,11 @@ class ReviewTest extends TestCase
         $this->expectException(ValidationException::class);
 
         $data = [
-            // 'id_kos' is missing here
             'user_id' => '1',
             'rating' => '5',
             'comment' => 'Tempatnya bagus'
         ];
 
-        // Validate the data to check for missing id_kos
         $this->validateReviewData($data);
     }
 
@@ -79,11 +73,9 @@ class ReviewTest extends TestCase
         $data = [
             'id_kos' => '7',
             'user_id' => '1',
-            // 'rating' is missing here
             'comment' => 'Tempatnya bagus'
         ];
 
-        // Validate the data to check for missing rating
         $this->validateReviewData($data);
     }
 
@@ -94,13 +86,13 @@ class ReviewTest extends TestCase
             'id_kos' => '7',
             'user_id' => '1',
             'rating' => '4',
-            'comment' => '' // Empty comment
+            'comment' => '' 
         ];
 
-        // Validate the data
+        
         $this->validateReviewData($data);
 
-        $this->assertTrue(true); // Bypass actual database insertion in test
+        $this->assertTrue(true); 
     }
 
     /** @test */
@@ -111,11 +103,10 @@ class ReviewTest extends TestCase
         $data = [
             'id_kos' => '7',
             'user_id' => '1',
-            'rating' => '10', // Invalid rating (assuming rating should be between 1 and 5)
+            'rating' => '10', 
             'comment' => 'Invalid rating'
         ];
 
-        // Validate the data to check for invalid rating value
         $this->validateReviewData($data);
     }
 }
