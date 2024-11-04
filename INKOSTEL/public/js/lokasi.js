@@ -1,8 +1,8 @@
 if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(function(position) {
         console.log(position.coords.latitude, position.coords.longitude);
-        var lat = position.coords.latitude;
-        var long = position.coords.longitude;
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
         fetch("https://nominatim.openstreetmap.org/reverse?format=json&lat=" + lat + "&lon=" + long)
             .then(response => response.json())
             .then(data => {
