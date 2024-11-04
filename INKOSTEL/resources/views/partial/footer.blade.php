@@ -53,6 +53,8 @@
                     <ul class="list-unstyled">
                         <li class="mb-2"><a href="#">FAQs</a></li>
                         <li class="mb-2"><a href="#">Support Center</a></li>
+                        <li class="mb-2"><a href="./saran">Suggession</a></li>
+
                         <li class="mb-2"><a href="contactUs">Contact Us</a></li>
                     </ul>
                 </div>
