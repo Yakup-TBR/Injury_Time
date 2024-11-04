@@ -13,8 +13,8 @@ class ReviewController extends Controller
     public function addReview(Request $request)
     {
         $request->validate([
-            'id_kos' => 'required|integer',
-            'rating' => 'required|integer|min:1|max:5',
+            'id_kos' => 'nullable|integer',
+            'rating' => 'nullable|integer|min:1|max:5',
             'comment' => 'nullable|string|max:255',
         ]);
 
