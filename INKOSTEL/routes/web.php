@@ -13,6 +13,7 @@ use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\CariKosController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ValidationController;
+use App\Http\Controllers\ReviewController;
 
 
 //use App\Http\Controllers\RegisterController;
@@ -89,3 +90,7 @@ Route::get('/contactUs', function () {
 })->name('contactUs');
 
 Route::post('/contact-us', [ContactController::class, 'store'])->name('contact.store');
+
+// Review
+Route::post('/add-review', [ReviewController::class, 'addReview'])->middleware('auth');
+Route::get('/reviews/{id_kos}', [ReviewController::class, 'getReviews']);

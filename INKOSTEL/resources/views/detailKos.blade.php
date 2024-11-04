@@ -15,6 +15,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('front/css/detailKos.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>details</title>
 </head>
 
@@ -116,6 +117,41 @@
                     </div>
                 </div>
                 <h6>Alamat : {{ $carikos->alamat }}</h6>
+
+                <div class="container">
+                <!-- Rata-Rata Bintang -->
+                <div class="average-rating mb-3">
+                    <h5>Average Rating: <span id="average-rating">0</span> stars</h5>
+                </div>
+
+                <!-- Form Ulasan -->
+                <form id="review-form" method="POST" action="/add-review" class="mb-4">
+                    @csrf
+                    <input type="hidden" name="id_kos" value="{{ $carikos->id_kos }}">
+
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating:</label>
+                        <select name="rating" id="rating" class="form-select" required>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="comment" class="form-label">Comment:</label>
+                        <textarea name="comment" id="comment" class="form-control" rows="3" maxlength="255"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                </form>
+
+                <!-- Daftar Ulasan dengan Scroll -->
+                <div id="reviews" class="overflow-auto" style="max-height: 300px;">
+                    <!-- Reviews will be loaded here -->
+                </div>
             </div>
 
 
@@ -153,6 +189,7 @@
     @section('script')
     <script src="../Bootstrap/js/bootstrap.min.js"></script>
     <script src="../js/detailKos.js"></script>
+    <script src="{{ asset('js/review.js') }}"></script>
     @endsection
 
 
